@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentasi Bukber Management UPA WF Pandaan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -25,6 +25,7 @@
             background-color: var(--emerald-dark);
         }
 
+        /* Slide Transitions */
         .slide {
             height: 100vh;
             width: 100vw;
@@ -44,11 +45,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.6s ease-out forwards;
+            animation: fadeIn 0.5s ease-out forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -57,39 +58,22 @@
 
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(217, 119, 6, 0.2);
             border-radius: 1.5rem;
             padding: 1.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
             width: 100%;
+            max-width: 1000px;
         }
 
         @media (min-width: 768px) {
-            .glass-panel { padding: 2.5rem; border-radius: 2rem; }
+            .glass-panel { padding: 3rem; border-radius: 2rem; }
         }
 
-        .timeline-item {
-            position: relative;
-            padding-left: 2rem;
-            border-left: 2px solid var(--gold);
-            margin-bottom: 1.2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -0.5rem;
-            top: 0.4rem;
-            width: 1rem;
-            height: 1rem;
-            background: var(--gold-light);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--gold);
-        }
-
+        /* Navigation & Fullscreen */
         .nav-btn, .fs-btn {
             background: rgba(217, 119, 6, 0.15);
             color: var(--gold-light);
@@ -104,6 +88,7 @@
             transition: all 0.3s;
             z-index: 100;
             backdrop-filter: blur(5px);
+            pointer-events: auto;
         }
 
         .nav-btn:hover, .fs-btn:hover {
@@ -123,7 +108,6 @@
             pointer-events: none;
         }
 
-        .nav-btn { pointer-events: auto; }
         .fs-btn { position: fixed; top: 1.5rem; right: 1.5rem; width: 3rem; height: 3rem; }
 
         .slide-indicator {
@@ -138,8 +122,24 @@
             text-transform: uppercase;
         }
 
-        .glass-panel::-webkit-scrollbar { width: 4px; }
-        .glass-panel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.55rem;
+            top: 0.4rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--gold-light);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold);
+        }
 
         .stat-card {
             background: rgba(255,255,255,0.05);
@@ -148,6 +148,10 @@
             padding: 1.5rem;
             text-align: center;
         }
+
+        /* Hide scrollbar */
+        .glass-panel::-webkit-scrollbar { width: 4px; }
+        .glass-panel::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -160,38 +164,38 @@
     <!-- Kontrol Navigasi -->
     <div class="nav-controls">
         <button id="prevBtn" class="nav-btn" onclick="changeSlide(-1)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </button>
         <button id="nextBtn" class="nav-btn" onclick="changeSlide(1)">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </button>
     </div>
 
-    <div class="slide-indicator" id="indicator">1 / 9</div>
+    <div class="slide-indicator" id="indicator">1 / 10</div>
 
     <!-- Slide 1: Welcome -->
     <section class="slide active" id="slide-0">
         <div class="text-center px-4 w-full">
-            <div class="mb-6 lg:mb-8 flex justify-center">
-                <svg width="60" height="80" class="md:w-[80px] md:h-[100px]" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.2">
+            <div class="mb-8 flex justify-center">
+                <svg width="70" height="90" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.2">
                     <path d="M12 2v2M5 22h14M8 18h8M12 4c-3.3 0-6 2.7-6 6v4c0 3.3 2.7 6 6 6s6-2.7 6-6v-4c0-3.3-2.7-6-6-6zM9 10h6M9 14h6" />
                 </svg>
             </div>
-            <h2 class="arabic text-5xl md:text-6xl lg:text-7xl gold-text mb-4 leading-tight">Ramadan Kareem</h2>
-            <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            <h2 class="arabic text-6xl md:text-7xl gold-text mb-4">Ramadan Kareem</h2>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
                 Buka Puasa Bersama <br>
                 <span class="gold-text uppercase">Admin & Management Team</span>
             </h1>
-            <p class="text-emerald-200 mt-6 lg:mt-8 text-xs md:text-base lg:text-lg font-medium tracking-wide">PT Ultra Prima Abadi - WF Pandaan</p>
+            <p class="text-emerald-200 text-sm md:text-lg font-medium tracking-widest uppercase opacity-70">Selasa, 17 Maret 2026 | UPA WF Pandaan</p>
         </div>
     </section>
 
     <!-- Slide 2: Pantun Pembuka -->
     <section class="slide" id="slide-1">
         <div class="text-center max-w-4xl px-6">
-            <h2 class="text-xl md:text-3xl gold-text font-black uppercase mb-8 tracking-widest">Sapaan Hangat</h2>
-            <div class="p-8 bg-emerald-900/30 border-2 border-emerald-800 rounded-[2.5rem]">
-                <p class="text-white italic text-lg md:text-2xl leading-relaxed">
+            <h2 class="text-xl md:text-2xl gold-text font-black uppercase mb-10 tracking-[0.3em]">Sapaan Hangat</h2>
+            <div class="p-10 bg-emerald-900/40 border-2 border-emerald-800 rounded-[3rem] shadow-2xl">
+                <p class="text-white italic text-xl md:text-3xl leading-loose font-medium">
                     "Beli wafer Tango di pasar Pandaan,<br>
                     Jangan lupa beli buat camilan.<br>
                     Selamat datang rekan-rekan manajemen sekalian,<br>
@@ -204,123 +208,140 @@
     <!-- Slide 3: Agenda -->
     <section class="slide" id="slide-2">
         <div class="w-full max-w-4xl glass-panel">
-            <h2 class="text-lg md:text-2xl lg:text-3xl font-black text-white uppercase tracking-widest mb-6 border-b border-emerald-800 pb-4">
+            <h2 class="text-2xl md:text-3xl font-black text-white uppercase tracking-widest mb-8 border-b border-emerald-800 pb-4">
                 Agenda <span class="gold-text">Sore Ini</span>
             </h2>
-            <div class="grid grid-cols-1 gap-1">
+            <div class="space-y-2">
                 <div class="timeline-item">
-                    <p class="gold-text font-black text-sm md:text-lg mb-0">17:00 - 17:30</p>
-                    <p class="text-white text-base md:text-lg font-bold">Welcoming & Ramah Tamah</p>
+                    <p class="gold-text font-black text-lg">17:00 - 17:30</p>
+                    <p class="text-white text-xl font-bold">Welcoming & Ramah Tamah</p>
                 </div>
                 <div class="timeline-item">
-                    <p class="gold-text font-black text-sm md:text-lg mb-0">17:30 - 17:50</p>
-                    <p class="text-white text-base md:text-lg font-bold">Sambutan & Speech Manajemen</p>
-                    <p class="text-emerald-300 text-[11px] md:text-sm font-semibold">
-                        • Pak Eko Budi R (Manajemen)<br>
+                    <p class="gold-text font-black text-lg">17:30 - 17:50</p>
+                    <p class="text-white text-xl font-bold">Sambutan & Speech Manajemen</p>
+                    <p class="text-emerald-300 text-sm md:text-base font-semibold mt-2">
+                        • Pak Eko Budi R (Perwakilan Manajemen)<br>
                         • Pak Destrianus (HEGA Manager)
                     </p>
                 </div>
                 <div class="timeline-item">
-                    <p class="gold-text font-black text-sm md:text-lg mb-0">18:01</p>
-                    <p class="text-white text-base md:text-lg font-bold">Iftar & Praying Break</p>
+                    <p class="gold-text font-black text-lg">18:01</p>
+                    <p class="text-white text-xl font-bold">Iftar & Praying Break (Maghrib)</p>
                 </div>
                 <div class="timeline-item">
-                    <p class="gold-text font-black text-sm md:text-lg mb-0">18:30 - Selesai</p>
-                    <p class="text-white text-base md:text-lg font-bold">Dinner & Sesi Foto</p>
+                    <p class="gold-text font-black text-lg">18:30 - Selesai</p>
+                    <p class="text-white text-xl font-bold">Dinner & Sesi Foto Bersama</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 4: The Power of Us -->
+    <!-- Slide 4: Appreciation -->
     <section class="slide" id="slide-3">
         <div class="w-full max-w-5xl glass-panel">
-            <h2 class="text-xl md:text-2xl lg:text-3xl font-black text-white uppercase tracking-widest mb-8 border-b border-emerald-800 pb-4">
+            <h2 class="text-2xl md:text-3xl font-black text-white uppercase tracking-widest mb-10 border-b border-emerald-800 pb-4">
                 The Power <span class="gold-text">of Us</span>
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="stat-card">
-                    <h3 class="gold-text font-bold text-lg mb-2 uppercase">Produksi</h3>
-                    <p class="text-white text-xs md:text-sm italic opacity-80">"Penjaga ritme dan output, tetap tangguh meski raga sedang berpuasa."</p>
+                    <h3 class="gold-text font-bold text-xl mb-2 uppercase">Produksi</h3>
+                    <p class="text-white text-sm italic opacity-80 leading-relaxed">"Penjaga ritme dan output, tetap tangguh meski raga sedang berpuasa."</p>
                 </div>
                 <div class="stat-card">
-                    <h3 class="gold-text font-bold text-lg mb-2 uppercase">Teknik</h3>
-                    <p class="text-white text-xs md:text-sm italic opacity-80">"Memastikan setiap mesin tetap 'Go Beyond' tanpa kendala teknis."</p>
+                    <h3 class="gold-text font-bold text-xl mb-2 uppercase">Teknik</h3>
+                    <p class="text-white text-sm italic opacity-80 leading-relaxed">"Memastikan setiap mesin tetap 'Go Beyond' tanpa kendala teknis."</p>
                 </div>
                 <div class="stat-card">
-                    <h3 class="gold-text font-bold text-lg mb-2 uppercase">Quality Control</h3>
-                    <p class="text-white text-xs md:text-sm italic opacity-80">"Mata elang yang menjaga kualitas tetap nomor satu di setiap produk."</p>
+                    <h3 class="gold-text font-bold text-xl mb-2 uppercase">QC & PPIC</h3>
+                    <p class="text-white text-sm italic opacity-80 leading-relaxed">"Menjaga kualitas produk dan alur distribusi operasional pabrik."</p>
                 </div>
                 <div class="stat-card">
-                    <h3 class="gold-text font-bold text-lg mb-2 uppercase">PPIC & Admin</h3>
-                    <p class="text-white text-xs md:text-sm italic opacity-80">"Dirigen yang mengatur harmoni operasional pabrik UPA Pandaan."</p>
+                    <h3 class="gold-text font-bold text-xl mb-2 uppercase">Admin Team</h3>
+                    <p class="text-white text-sm italic opacity-80 leading-relaxed">"Pilar pendukung kelancaran sistem dan administrasi UPA Pandaan."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 5: Management Speech -->
+    <!-- Slide 5: Speech Speakers -->
     <section class="slide" id="slide-4">
-        <div class="w-full max-w-5xl glass-panel lg:bg-transparent lg:border-none lg:shadow-none lg:backdrop-blur-none">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-                <div class="text-center lg:text-left">
-                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-black text-white uppercase leading-tight mb-8">
-                        Management <span class="gold-text">Speech</span>
-                    </h2>
-                    <div class="space-y-6">
-                        <div class="p-4 bg-emerald-900/40 rounded-2xl border-l-4 border-gold">
-                            <p class="gold-text font-bold text-lg md:text-xl mb-1">Pak Eko Budi R</p>
-                            <p class="text-white text-sm">"Menyambung Visi, Menyatukan Langkah."</p>
-                        </div>
-                        <div class="p-4 bg-emerald-900/40 rounded-2xl border-l-4 border-gold">
-                            <p class="gold-text font-bold text-lg md:text-xl mb-1">Pak Destrianus</p>
-                            <p class="text-white text-sm">"Building People, Harmony, and Excellence."</p>
-                        </div>
-                    </div>
+        <div class="w-full max-w-4xl glass-panel border-gold">
+            <h2 class="text-2xl md:text-4xl font-black text-white uppercase text-center mb-12">
+                Management <span class="gold-text">Speech</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-6 bg-emerald-900/50 rounded-3xl border-l-8 border-gold shadow-xl">
+                    <p class="gold-text font-black text-2xl mb-1">Pak Eko Budi R</p>
+                    <p class="text-white text-sm font-bold opacity-60 uppercase tracking-widest">Manajemen</p>
                 </div>
-                <div class="hidden md:block rounded-2xl overflow-hidden border-4 border-yellow-600/30 shadow-2xl h-80 w-full">
-                    <img src="https://images.unsplash.com/photo-1518331647614-7a1f04cd34cf?q=80&w=1000&auto=format&fit=crop" alt="Team Synergy" class="w-full h-full object-cover opacity-80">
+                <div class="p-6 bg-emerald-900/50 rounded-3xl border-l-8 border-gold shadow-xl">
+                    <p class="gold-text font-black text-2xl mb-1">Pak Destrianus</p>
+                    <p class="text-white text-sm font-bold opacity-60 uppercase tracking-widest">HEGA Manager</p>
                 </div>
             </div>
+            <p class="text-center text-emerald-100 mt-12 text-lg italic">"Menyambung visi, menyatukan langkah untuk UPA yang lebih maju."</p>
         </div>
     </section>
 
-    <!-- Slide 6: Reflection (OT Values) -->
+    <!-- Slide 6: OT Values -->
     <section class="slide" id="slide-5">
         <div class="w-full max-w-4xl text-center">
-            <h2 class="text-2xl md:text-4xl font-black text-white uppercase mb-4">Go Beyond <span class="gold-text">in Ramadan</span></h2>
-            <p class="text-emerald-200 text-sm mb-12 italic">"Keikhlasan ibadah, Kejujuran bekerja."</p>
-            <div class="grid grid-cols-3 gap-4">
-                <div><div class="w-12 h-12 rounded-full border-2 border-gold-light flex items-center justify-center mx-auto mb-2"><span class="gold-text font-black">1</span></div><p class="text-white font-bold text-[10px] uppercase">Integrity</p></div>
-                <div><div class="w-12 h-12 rounded-full border-2 border-gold-light flex items-center justify-center mx-auto mb-2"><span class="gold-text font-black">2</span></div><p class="text-white font-bold text-[10px] uppercase">Sinergy</p></div>
-                <div><div class="w-12 h-12 rounded-full border-2 border-gold-light flex items-center justify-center mx-auto mb-2"><span class="gold-text font-black">3</span></div><p class="text-white font-bold text-[10px] uppercase">Innovation</p></div>
+            <h2 class="text-3xl md:text-5xl font-black text-white uppercase mb-16">Go Beyond <span class="gold-text">in Ramadan</span></h2>
+            <div class="grid grid-cols-3 gap-8">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-gold-light flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(217,119,6,0.3)]">
+                        <span class="gold-text font-black text-2xl">I</span>
+                    </div>
+                    <p class="text-white font-black text-sm md:text-lg uppercase tracking-[0.2em] mb-2">Integrity</p>
+                    <p class="text-emerald-200 text-xs md:text-sm">Keikhlasan ibadah, Kejujuran bekerja.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-gold-light flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(217,119,6,0.3)]">
+                        <span class="gold-text font-black text-2xl">S</span>
+                    </div>
+                    <p class="text-white font-black text-sm md:text-lg uppercase tracking-[0.2em] mb-2">Synergy</p>
+                    <p class="text-emerald-200 text-xs md:text-sm">Satu tim besar, melampaui sekat divisi.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-4 border-gold-light flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(217,119,6,0.3)]">
+                        <span class="gold-text font-black text-2xl">IN</span>
+                    </div>
+                    <p class="text-white font-black text-sm md:text-lg uppercase tracking-[0.2em] mb-2">Innovation</p>
+                    <p class="text-emerald-200 text-xs md:text-sm">Solusi kreatif di tengah tantangan.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Slide 7: Quote -->
     <section class="slide" id="slide-6">
-        <div class="text-center max-w-4xl px-4 md:px-12">
-            <p class="text-4xl md:text-7xl text-yellow-600 opacity-20 mb-[-1rem]">"</p>
-            <h2 class="arabic text-3xl md:text-5xl text-white italic mb-8">"Menjalin silaturahmi, mempererat kekeluargaan di bulan yang suci."</h2>
-            <div class="h-1 w-16 bg-yellow-600 mx-auto mb-8"></div>
-            <p class="text-white font-bold tracking-[0.2rem] uppercase text-[10px]">PT Ultra Prima Abadi - WF Pandaan</p>
+        <div class="text-center max-w-5xl px-8">
+            <span class="text-8xl text-gold opacity-20 block mb-[-2rem]">"</span>
+            <h2 class="arabic text-4xl md:text-6xl text-white italic leading-relaxed mb-10">
+                "Menjalin silaturahmi, mempererat kekeluargaan di bulan yang suci."
+            </h2>
+            <div class="h-1.5 w-32 bg-gold mx-auto mb-10"></div>
+            <p class="text-white font-black tracking-[0.4rem] uppercase text-xs md:text-base opacity-60">PT Ultra Prima Abadi - Pandaan</p>
         </div>
     </section>
 
-    <!-- Slide 8: Doa Berbuka (UPDATED TO FULL VERSION) -->
+    <!-- Slide 8: Doa Berbuka (FULL VERSION FIXED) -->
     <section class="slide" id="slide-7">
-        <div class="w-full max-w-4xl glass-panel text-center">
-            <h2 class="gold-text text-xl md:text-2xl font-black uppercase mb-8">Doa Berbuka Puasa</h2>
-            <p class="arabic text-3xl md:text-4xl text-white mb-6">اَللّٰهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ بِرَحْمَتِكَ يَا اَرْحَمَ الرَّاحِمِيْنَ</p>
-            <p class="text-emerald-100 italic text-sm md:text-base leading-relaxed">
-                "Allahumma laka shumtu wa bika aamantu wa 'ala rizqika afthartu birahmatika yaa arhamar roohimiin."<br>
-                <span class="text-[10px] opacity-60">(Ya Allah, untuk-Mu aku berpuasa, kepada-Mu aku beriman, dan dengan rezeki-Mu aku berbuka, dengan rahmat-Mu, wahai Dzat yang Paling Penyayang.)</span>
-            </p>
+        <div class="w-full max-w-4xl glass-panel text-center border-gold">
+            <h2 class="gold-text text-2xl md:text-3xl font-black uppercase mb-10 tracking-widest">Doa Berbuka Puasa</h2>
+            <p class="arabic text-4xl md:text-5xl text-white mb-8 leading-loose">اَللّٰهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ بِرَحْمَتِكَ يَا اَرْحَمَ الرَّاحِمِيْنَ</p>
+            <div class="space-y-4">
+                <p class="text-white italic text-lg md:text-xl font-semibold leading-relaxed">
+                    "Allahumma laka shumtu wa bika aamantu wa 'ala rizqika afthartu birahmatika yaa arhamar roohimiin."
+                </p>
+                <p class="text-white text-xs md:text-sm opacity-70 max-w-2xl mx-auto">
+                    (Ya Allah, untuk-Mu aku berpuasa, kepada-Mu aku beriman, dan dengan rezeki-Mu aku berbuka, dengan rahmat-Mu, wahai Dzat yang Paling Penyayang.)
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- Slide 9: Closing -->
+    <!-- Slide 9: Main Closing -->
     <section class="slide" id="slide-8">
         <div class="text-center glass-panel px-6 py-8 border-yellow-600">
             <h1 class="text-3xl md:text-6xl font-black gold-text mb-4 leading-tight uppercase">Selamat Berbuka</h1>
@@ -330,6 +351,17 @@
                 <span class="text-white font-black tracking-widest text-[8px] uppercase">Innovation</span>
                 <span class="text-white font-black tracking-widest text-[8px] uppercase">Inspiration</span>
             </div>
+        </div>
+    </section>
+
+    <!-- Slide 10: Final Closing Slide (Penutup) -->
+    <section class="slide" id="slide-9">
+        <div class="glass-panel text-center px-12 py-16 border-2 border-gold/30 max-w-3xl mx-auto">
+            <h2 class="text-5xl md:text-6xl font-black text-white mb-6 uppercase tracking-tighter">TERIMA KASIH</h2>
+            <p class="text-lg md:text-2xl text-emerald-100 mb-10 font-medium">Atas Sinergi & Kehadiran Rekan-Rekan Manajemen Sekalian.</p>
+            <div class="h-1 w-24 bg-gold mx-auto mb-10"></div>
+            <h3 class="gold-text text-4xl md:text-5xl font-black tracking-[0.5rem] animate-pulse">GO BEYOND!</h3>
+            <p class="text-white text-[10px] md:text-xs mt-16 opacity-40 uppercase tracking-[0.3em]">Official Management Gathering - UPA Pandaan</p>
         </div>
     </section>
 
@@ -353,9 +385,10 @@
             showSlide(currentSlide);
         }
 
+        // Fullscreen Toggle
         fsBtn.addEventListener('click', () => {
             if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
+                document.documentElement.requestFullscreen().catch(e => console.error(e));
                 fsIcon.innerHTML = '<path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/>';
             } else {
                 document.exitFullscreen();
@@ -363,19 +396,30 @@
             }
         });
 
+        // Keyboard Controls
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') changeSlide(1);
             if (e.key === 'ArrowLeft' || e.key === 'PageUp') changeSlide(-1);
+            if (e.key === 'f' || e.key === 'F') fsBtn.click();
         });
 
+        // Touch Navigation
         let touchstartX = 0;
         document.addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
         document.addEventListener('touchend', e => {
-            if (touchstartX - e.changedTouches[0].screenX > 50) changeSlide(1);
-            if (e.changedTouches[0].screenX - touchstartX > 50) changeSlide(-1);
+            let touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 70) changeSlide(1);
+            if (touchendX - touchstartX > 70) changeSlide(-1);
+        });
+
+        // Auto-refresh layout on resize
+        window.addEventListener('resize', () => {
+            // Re-render to ensure responsive classes apply
+            showSlide(currentSlide);
         });
 
         showSlide(0);
     </script>
 </body>
 </html>
+```
