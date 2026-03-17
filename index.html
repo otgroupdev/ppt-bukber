@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentasi Bukber Management UPA WF Pandaan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --emerald-dark: #022c22;
+            --emerald-light: #064e3b;
+            --gold: #d97706;
+            --gold-light: #fcd34d;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--emerald-dark);
+        }
+
+        .slide {
+            height: 100vh;
+            width: 100vw;
+            display: none;
+            position: relative;
+            padding: 2rem;
+            box-sizing: border-box;
+            background: radial-gradient(circle at center, var(--emerald-light) 0%, var(--emerald-dark) 100%);
+        }
+
+        @media (min-width: 1024px) {
+            .slide {
+                padding: 4rem;
+            }
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .arabic {
+            font-family: 'Amiri', serif;
+        }
+
+        .gold-text {
+            color: var(--gold-light);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(217, 119, 6, 0.2);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            max-height: 85vh;
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .glass-panel {
+                padding: 3rem;
+                border-radius: 2rem;
+            }
+        }
+
+        /* Timeline Styles */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.5rem;
+            top: 0.4rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--gold-light);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        /* Navigation Buttons */
+        .nav-btn {
+            position: fixed;
+            bottom: 1rem;
+            background: rgba(217, 119, 6, 0.2);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        @media (min-width: 768px) {
+            .nav-btn {
+                bottom: 2rem;
+                width: 3.5rem;
+                height: 3.5rem;
+            }
+        }
+
+        .nav-btn:hover {
+            background: var(--gold);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        #prevBtn { left: 1rem; }
+        #nextBtn { right: 1rem; }
+        @media (min-width: 768px) {
+            #prevBtn { left: 2rem; }
+            #nextBtn { right: 2rem; }
+        }
+
+        .slide-indicator {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.3);
+            font-size: 0.65rem;
+            letter-spacing: 0.15rem;
+            font-weight: 800;
+        }
+
+        /* Hide scrollbar for aesthetic purposes */
+        .glass-panel::-webkit-scrollbar {
+            width: 4px;
+        }
+        .glass-panel::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <button id="prevBtn" class="nav-btn" onclick="changeSlide(-1)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button id="nextBtn" class="nav-btn" onclick="changeSlide(1)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+
+    <div class="slide-indicator" id="indicator">1 / 5</div>
+
+    <!-- Slide 1: Welcome -->
+    <section class="slide active" id="slide-0">
+        <div class="text-center px-4 w-full">
+            <div class="mb-6 lg:mb-8 flex justify-center">
+                <svg width="60" height="80" class="lg:w-[80px] lg:h-[100px]" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.2">
+                    <path d="M12 2v2M5 22h14M8 18h8M12 4c-3.3 0-6 2.7-6 6v4c0 3.3 2.7 6 6 6s6-2.7 6-6v-4c0-3.3-2.7-6-6-6zM9 10h6M9 14h6" />
+                </svg>
+            </div>
+            <h2 class="arabic text-5xl md:text-6xl lg:text-7xl gold-text mb-4 leading-tight">Ramadan Kareem</h2>
+            <p class="text-white font-bold tracking-[0.3rem] md:tracking-[0.5rem] uppercase text-[10px] md:text-sm mb-8 lg:mb-12 opacity-60">Official Presentation</p>
+            <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+                Buka Puasa Bersama <br>
+                <span class="gold-text uppercase">Admin & Management Team</span>
+            </h1>
+            <p class="text-emerald-200 mt-6 lg:mt-8 text-sm md:text-base lg:text-lg font-medium">PT Ultra Prima Abadi - WF Pandaan</p>
+        </div>
+    </section>
+
+    <!-- Slide 2: Rundown -->
+    <section class="slide" id="slide-1">
+        <div class="w-full max-w-4xl glass-panel">
+            <h2 class="text-xl md:text-2xl lg:text-3xl font-black text-white uppercase tracking-widest mb-8 lg:mb-12 border-b border-emerald-800 pb-4">
+                Agenda <span class="gold-text">Sore Ini</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 gap-2 md:gap-4">
+                <div class="timeline-item">
+                    <p class="gold-text font-black text-base md:text-xl mb-0">17:00 - 17:30</p>
+                    <p class="text-white text-base md:text-lg font-bold">Welcoming & Networking</p>
+                    <p class="text-emerald-300 text-xs md:text-sm">Ramah tamah & persiapan pembukaan.</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="gold-text font-black text-base md:text-xl mb-0">17:30 - 17:50</p>
+                    <p class="text-white text-base md:text-lg font-bold">Opening & Management Speech</p>
+                    <p class="text-emerald-300 text-xs md:text-sm">Sambutan Pimpinan & Kultum Ramadan.</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="gold-text font-black text-base md:text-xl mb-0">18:01</p>
+                    <p class="text-white text-base md:text-lg font-bold">Iftar & Praying Break</p>
+                    <p class="text-emerald-300 text-xs md:text-sm">Berbuka puasa & Sholat Maghrib berjamaah.</p>
+                </div>
+                <div class="timeline-item">
+                    <p class="gold-text font-black text-base md:text-xl mb-0">18:30 - Selesai</p>
+                    <p class="text-white text-base md:text-lg font-bold">Dinner & Closing</p>
+                    <p class="text-emerald-300 text-xs md:text-sm">Makan malam bersama & sesi foto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Management Speech -->
+    <section class="slide" id="slide-2">
+        <div class="w-full max-w-5xl glass-panel lg:bg-transparent lg:border-none lg:shadow-none lg:backdrop-blur-none lg:overflow-visible">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                <div class="text-center lg:text-left">
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-black text-white uppercase leading-tight mb-4 lg:mb-8">
+                        Sinergi dalam <br><span class="gold-text">Keberkahan</span>
+                    </h2>
+                    <p class="text-emerald-100 text-sm md:text-base lg:text-lg leading-relaxed mb-4 lg:mb-6">
+                        Momen Ramadan adalah waktu terbaik untuk mempererat koordinasi dan komunikasi antar lini manajemen UPA WF Pandaan.
+                    </p>
+                    <p class="text-emerald-100 text-sm md:text-base lg:text-lg leading-relaxed">
+                        Kebersamaan ini diharapkan membawa energi baru untuk mencapai target-target kita ke depan. <strong>Go Beyond!</strong>
+                    </p>
+                </div>
+                <div class="rounded-2xl lg:rounded-3xl overflow-hidden border-4 border-yellow-600/30 shadow-2xl h-48 md:h-64 lg:h-80 w-full">
+                    <img src="https://images.unsplash.com/photo-1518331647614-7a1f04cd34cf?q=80&w=1000&auto=format&fit=crop" alt="Kebersamaan Team" class="w-full h-full object-cover opacity-80">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Reflection -->
+    <section class="slide" id="slide-3">
+        <div class="text-center max-w-4xl px-4 md:px-12">
+            <p class="text-4xl md:text-7xl text-yellow-600 opacity-20 mb-[-1rem] md:mb-[-2rem]">"</p>
+            <h2 class="arabic text-3xl md:text-5xl lg:text-6xl text-white leading-relaxed italic mb-8">
+                "Menjalin silaturahmi, mempererat kekeluargaan di bulan yang suci."
+            </h2>
+            <div class="h-1 w-16 md:w-24 bg-yellow-600 mx-auto mb-8"></div>
+            <p class="text-white font-bold tracking-[0.2rem] md:tracking-[0.3rem] uppercase text-[10px] md:text-sm">PT Ultra Prima Abadi</p>
+        </div>
+    </section>
+
+    <!-- Slide 5: Closing -->
+    <section class="slide" id="slide-4">
+        <div class="text-center glass-panel px-6 py-10 md:px-20 md:py-16 border-yellow-600 w-auto max-w-[90%] md:max-w-none">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-black gold-text mb-4 lg:mb-6 leading-tight">Selamat Berbuka</h1>
+            <p class="text-base md:text-xl lg:text-2xl text-white font-medium mb-8 lg:mb-12">Semoga puasa dan amal ibadah kita diterima oleh Allah SWT.</p>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 opacity-40">
+                <span class="text-white font-black tracking-widest text-[8px] md:text-xs uppercase">Integrity</span>
+                <span class="text-white font-black tracking-widest text-[8px] md:text-xs uppercase">Innovation</span>
+                <span class="text-white font-black tracking-widest text-[8px] md:text-xs uppercase">Inspiration</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicator = document.getElementById('indicator');
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            indicator.innerText = `${index + 1} / ${slides.length}`;
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            showSlide(currentSlide);
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') changeSlide(1);
+            if (e.key === 'ArrowLeft' || e.key === 'PageUp') changeSlide(-1);
+        });
+
+        // Touch Navigation (Simple Swipe)
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        document.addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 50) changeSlide(1);
+            if (touchendX - touchstartX > 50) changeSlide(-1);
+        });
+
+        // Initialize first slide
+        showSlide(0);
+    </script>
+</body>
+</html>
